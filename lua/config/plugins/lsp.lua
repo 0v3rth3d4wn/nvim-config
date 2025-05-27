@@ -155,6 +155,8 @@ return {
             buffer = event.buf,
             callback = function()
               vim.lsp.buf.format { async = false, id = event.data.client_id }
+              require('mini.trailspace').trim()
+              require('mini.trailspace').trim_last_lines()
             end,
           })
         end,

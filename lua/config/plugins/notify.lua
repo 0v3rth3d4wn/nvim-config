@@ -4,7 +4,6 @@ return {
     config = function()
       local notify = require("notify")
       local stages_util = require("notify.stages.util")
-
     end
   }
 }
