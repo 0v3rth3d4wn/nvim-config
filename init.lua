@@ -1,3 +1,6 @@
+vim.g.maplocalleader = ' '
+vim.g.mapleader = ' '
+
 require("config.lazy")
 -- vim.notify = require("notify")
 

@@ -27,7 +27,16 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 0
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.o.mouse = 'a'
 
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
+  callback = function()
+    if vim.fn.executable("im-select") == 1 then
+      local input_english = "com.apple.keylayout.ABC"
+      os.execute("im-select " .. input_english)
+    end
+  end
+})
 
 -- Setup lazy.nvim
 require("lazy").setup({
