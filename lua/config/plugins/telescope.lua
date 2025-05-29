@@ -29,6 +29,7 @@ return {
     --   }
     -- end)
     vim.keymap.set("n", "<space>fs", require("telescope.builtin").grep_string, { desc = '[S]election' })
+
     vim.keymap.set("n", "<space>fc", function()
       require("telescope.builtin").find_files {
         cwd = vim.fn.stdpath("config")

@@ -44,24 +44,32 @@ vim.api.nvim_create_autocmd({ "FocusGained" }, {
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    -- {
+    --   'maxmx03/fluoromachine.nvim',
+    --   lazy = false,
+    --   priority = 1000,
+    --   config = function()
+    --     local fm = require 'fluoromachine'
+    --
+    --     fm.setup {
+    --       glow = false,
+    --       brightness = 0,
+    --       theme = 'fluoromachine',
+    --       transparent = true,
+    --     }
+    --
+    --     vim.cmd.colorscheme 'fluoromachine'
+    --   end
+    -- },
     {
-      'maxmx03/fluoromachine.nvim',
+      "folke/tokyonight.nvim",
       lazy = false,
       priority = 1000,
+      opts = {},
       config = function()
-        local fm = require 'fluoromachine'
-
-        fm.setup {
-          glow = false,
-          brightness = 0,
-          theme = 'fluoromachine',
-          transparent = true,
-        }
-
-        vim.cmd.colorscheme 'fluoromachine'
+        vim.cmd [[colorscheme tokyonight-night]]
       end
     },
-
     -- import your plugins
     { import = "config.plugins" },
   },
