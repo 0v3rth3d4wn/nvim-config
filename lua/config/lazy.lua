@@ -28,6 +28,9 @@ vim.opt.softtabstop = 0
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.o.mouse = 'a'
+-- vim.o.spell = true
+-- vim.o.spelllang = "en_us"
+
 
 vim.api.nvim_create_autocmd({ "FocusGained" }, {
   callback = function()

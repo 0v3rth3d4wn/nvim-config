@@ -23,6 +23,11 @@ return {
 
     vim.keymap.set("n", "<space>ff", require("telescope.builtin").find_files, { desc = '[F]ind [F]iles' })
     vim.keymap.set("n", "<space>fw", require("telescope.builtin").live_grep, { desc = '[W]ord' })
+    -- vim.keymap.set("n", "<space>fw", function()
+    --   require("telescope.builtin").live_grep {
+    --     -- cwd = vim.fn.:
+    --   }
+    -- end)
     vim.keymap.set("n", "<space>fs", require("telescope.builtin").grep_string, { desc = '[S]election' })
     vim.keymap.set("n", "<space>fc", function()
       require("telescope.builtin").find_files {
