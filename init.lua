@@ -27,6 +27,17 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = '#9ece6a', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = '#e0af68', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'GitSignsDelete', { fg = '#db4b4b', bg = 'NONE' })
 -- <D-k> is basically the super key
 -- vim.keymap.set('n', 'L', function() vim.diagnostic.open_float() end)
 vim.keymap.set({ "n", "v" }, "<C-w><C-g>", function() require("nvim-tree.api").tree.toggle() end)
@@ -39,3 +50,7 @@ vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 vim.keymap.set("n", "<C-b><C-b>", "<cmd>lua MiniFiles.open()<CR>")
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
