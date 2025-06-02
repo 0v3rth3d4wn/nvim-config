@@ -39,6 +39,7 @@ return {
 
       -- Close buffer
       map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+      map('n', '<C-c>', '<Cmd>BufferClose<CR>', opts)
 
       -- Wipeout buffer
       --                 :BufferWipeout
