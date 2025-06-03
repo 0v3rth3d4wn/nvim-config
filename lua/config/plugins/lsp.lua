@@ -15,6 +15,9 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { 'j-hui/fidget.nvim', opts = {} },
+      'nvimtools/none-ls.nvim',
+      "nvim-lua/plenary.nvim",
+
       -- {
       --   'saghen/blink.cmp',
       --   dependencies = {
@@ -123,6 +126,15 @@ return {
               require('mini.trailspace').trim_last_lines()
             end,
           })
+
+          -- prettier on save
+          --[[ vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.md" },
+            callback = function()
+              local file = vim.fn.expand("%")
+              vim.cmd("silent! !npx prettier --write " .. file)
+            end,
+          }) ]]
         end,
       })
 

@@ -14,7 +14,9 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
-vim.o.wrap = false
+vim.o.wrap = true
+vim.opt.wrap = true
+
 
 vim.g.maplocalleader = " "
 vim.g.mapleader = " "
