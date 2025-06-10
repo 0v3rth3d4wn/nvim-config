@@ -1,7 +1,11 @@
 return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
-  dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { 'nvim-telescope/telescope-ui-select.nvim' }
+  },
   config = function()
     require('telescope').setup {
       pickers = {
@@ -16,17 +20,18 @@ return {
         },
       },
       extensions = {
-        fzf = {}
+        fzf = {},
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {
+
+          }
+        }
       }
     }
     require('telescope').load_extension('fzf')
+    require('telescope').load_extension('ui-select')
     vim.keymap.set("n", "<space>ff", require("telescope.builtin").find_files, { desc = '[F]ind [F]iles' })
     vim.keymap.set("n", "<space>fw", require("telescope.builtin").live_grep, { desc = '[W]ord' })
-    -- vim.keymap.set("n", "<space>fw", function()
-    --   require("telescope.builtin").live_grep {
-    --     -- cwd = vim.fn.:
-    --   }
-    -- end)
     vim.keymap.set("n", "<space>fs", require("telescope.builtin").grep_string, { desc = '[S]election' })
 
     vim.keymap.set("n", "<space>fc", function()

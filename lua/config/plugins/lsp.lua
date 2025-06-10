@@ -121,20 +121,13 @@ return {
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = event.buf,
             callback = function()
-              vim.lsp.buf.format { async = false, id = event.data.client_id }
+              if client ~= nil and client.name ~= 'ts_ls' then
+                vim.lsp.buf.format { async = false, id = event.data.client_id }
+              end
               require('mini.trailspace').trim()
               require('mini.trailspace').trim_last_lines()
             end,
           })
-
-          -- prettier on save
-          --[[ vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.md" },
-            callback = function()
-              local file = vim.fn.expand("%")
-              vim.cmd("silent! !npx prettier --write " .. file)
-            end,
-          }) ]]
         end,
       })
 
@@ -188,6 +181,7 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
+        eslint_lsp = {},
         ts_ls = {},
         astro = {},
         --
