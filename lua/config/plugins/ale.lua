@@ -11,17 +11,18 @@ return {
       lua = { 'lua_language_server' },
       javascript = {},
       typescript = {},
+      typescriptreact = {},
     }
 
     g.ale_fixers = {
       javascript = { 'prettier' },
       typescript = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      typescriptreact = { 'prettier' },
       json = { 'prettier' },
       jsonc = { 'prettier' },
       css = { 'prettier' },
-      html = { 'prettier' },
-      javascriptreact = { 'prettier' },
-      typescriptreact = { 'prettier' }
+      html = { 'prettier' }
     }
   end
 }

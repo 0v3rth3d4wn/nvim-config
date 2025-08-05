@@ -13,7 +13,7 @@ vim.o.updatecount = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.inccommand = 'split'
-vim.o.cursorline = true
+vim.o.cursorline = false
 vim.o.wrap = true
 vim.opt.wrap = true
 
@@ -49,7 +49,13 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- vim.keymap.set('v', "<space>x", ":lua<CR>")
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
-vim.keymap.set("n", "<C-b><C-b>", "<cmd>lua MiniFiles.open()<CR>")
+-- vim.keymap.set("n", "<C-b><C-b>", "<cmd>lua MiniFiles.open()<CR>")
+vim.keymap.set("n", "<C-b><C-b>", function()
+  local buf_name = vim.api.nvim_buf_get_name(0)
+  local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+  MiniFiles.open(path)
+  MiniFiles.reveal_cwd()
+end, { desc = "Open Mini Files" })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })

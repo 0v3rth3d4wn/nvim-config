@@ -70,7 +70,46 @@ require("lazy").setup({
     --     vim.cmd [[colorscheme tokyonight-night]]
     --   end
     -- },
+
     {
+      "EdenEast/nightfox.nvim",
+      lazy = false,
+      config = function()
+        require("nightfox").setup({
+          palettes = {
+            duskfox = {
+              --   green = "#00E78A",
+              --   yellow = "#F9C80E",
+              --   pink = "#F6019D",
+              --   red = "#FD1D53",
+              --   magenta = "#791E94",
+              --   cyan = "#2DE2E6",
+              --   blue = "#006AF9",
+              --   orange = "#FF6C11",
+              --   black = "#000000",
+              --   white = "#FFFFFF",
+              -- bg1 = "#540D6E",
+            },
+            carbonfox = {
+              bg1 = "#000000"
+              -- black = {
+              --   base = "#000000",
+              --   bright = "#000000",
+              --   dim = "#000000"
+              -- },
+              -- white = {
+              --   base = "#000000",
+              --   bright = "#000000",
+              --   dim = "#000000"
+              -- }
+            }
+          }
+        })
+        -- vim.cmd("colorscheme duskfox")
+        vim.cmd("colorscheme carbonfox")
+      end
+    },
+    --[[ {
       "scottmckendry/cyberdream.nvim",
       lazy = false,
       priority = 1000,
@@ -82,7 +121,7 @@ require("lazy").setup({
         })
         vim.cmd("colorscheme cyberdream")
       end
-    },
+    } ]]
     -- import your plugins
     { import = "config.plugins" },
   },

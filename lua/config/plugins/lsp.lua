@@ -121,9 +121,20 @@ return {
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = event.buf,
             callback = function()
-              if client ~= nil and client.name ~= 'ts_ls' then
-                vim.lsp.buf.format { async = false, id = event.data.client_id }
+              -- Directly inspect the user's ALE configuration.
+              -- This is the most reliable method.
+              local ale_fixer_config = vim.g.ale_fixers
+              local filetype = vim.bo.filetype
+              if ale_fixer_config and ale_fixer_config[filetype] and not vim.tbl_isempty(ale_fixer_config[filetype]) then
+                -- If yes, ALE is configured to handle this file. Do nothing.
+                return
               end
+
+              -- If ALE is not handling this filetype, proceed with LSP formatting.
+              vim.lsp.buf.format({ async = true, bufnr = event.buf })
+              -- if client ~= nil and client.name ~= 'ts_ls' then
+              --   vim.lsp.buf.format { async = false, id = event.data.client_id }
+              -- end
               require('mini.trailspace').trim()
               require('mini.trailspace').trim_last_lines()
             end,
@@ -181,9 +192,9 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        eslint_lsp = {},
-        ts_ls = {},
+        -- ts_ls = {},
         astro = {},
+        metals = {},
         --
         lua_ls = {
           -- cmd = { ... },
