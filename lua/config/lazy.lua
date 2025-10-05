@@ -40,7 +40,6 @@ vim.o.mouse = 'a'
     end
   end
 }) ]]
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -70,7 +69,12 @@ require("lazy").setup({
     --     vim.cmd [[colorscheme tokyonight-night]]
     --   end
     -- },
-
+    --[[ {
+  "craftzdog/solarized-osaka.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+} ]]
     {
       "EdenEast/nightfox.nvim",
       lazy = false,

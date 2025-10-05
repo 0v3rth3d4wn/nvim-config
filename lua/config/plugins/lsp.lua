@@ -131,7 +131,7 @@ return {
               end
 
               -- If ALE is not handling this filetype, proceed with LSP formatting.
-              vim.lsp.buf.format({ async = true, bufnr = event.buf })
+              vim.lsp.buf.format({ async = false, bufnr = event.buf })
               -- if client ~= nil and client.name ~= 'ts_ls' then
               --   vim.lsp.buf.format { async = false, id = event.data.client_id }
               -- end
@@ -194,7 +194,7 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         astro = {},
-        metals = {},
+        -- metals = {},
         --
         lua_ls = {
           -- cmd = { ... },
@@ -233,6 +233,7 @@ return {
       local lspconfig = require('lspconfig')
       for server, config in pairs(servers) do
         config.capabilities = require('blink-cmp').get_lsp_capabilities(config.capabilities)
+
         lspconfig[server].setup(config)
       end
     end,
