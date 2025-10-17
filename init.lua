@@ -16,6 +16,7 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = false
 vim.o.wrap = true
 vim.opt.wrap = true
+vim.o.winborder = 'single'
 
 
 vim.g.maplocalleader = " "

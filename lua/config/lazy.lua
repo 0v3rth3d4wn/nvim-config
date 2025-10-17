@@ -44,29 +44,31 @@ vim.o.mouse = 'a'
 require("lazy").setup({
   spec = {
     -- {
-    --   'maxmx03/fluoromachine.nvim',
-    --   lazy = false,
-    --   priority = 1000,
-    --   config = function()
-    --     local fm = require 'fluoromachine'
-    --
-    --     fm.setup {
-    --       glow = false,
-    --       brightness = 0,
-    --       theme = 'fluoromachine',
-    --       transparent = true,
-    --     }
-    --
-    --     vim.cmd.colorscheme 'fluoromachine'
-    --   end
-    -- },
-    -- {
     --   "folke/tokyonight.nvim",
     --   lazy = false,
     --   priority = 1000,
-    --   opts = {},
-    --   config = function()
-    --     vim.cmd [[colorscheme tokyonight-night]]
+    --   opts = {
+    --     style = "night",
+    --     transparent = false,
+    --     styles = {
+    --       functions = {},
+    --       keywords = { italic = false }
+    --     },
+    --     on_colors = function(colors)
+    --       colors.bg = "#000000"
+    --       colors.bg_dark = "#000000"
+    --       colors.bg_dark1 = "#000000"
+    --       --[[ colors.cyan = "#4cc9f0"
+    --       colors.blue = "#4361ee" ]]
+    --     end,
+    --     on_highlights = function(highlights, colors)
+    --       highlights.FlashLabel = { bg = "#f72585", fg = "#000000" }
+    --     end
+    --
+    --   },
+    --   config = function(_, opts)
+    --     require("tokyonight").setup(opts)
+    --     vim.cmd [[colorscheme tokyonight]]
     --   end
     -- },
     --[[ {
@@ -75,7 +77,7 @@ require("lazy").setup({
   priority = 1000,
   opts = {},
 } ]]
-    {
+    --[[ {
       "EdenEast/nightfox.nvim",
       lazy = false,
       config = function()
@@ -112,8 +114,8 @@ require("lazy").setup({
         -- vim.cmd("colorscheme duskfox")
         vim.cmd("colorscheme carbonfox")
       end
-    },
-    --[[ {
+    } ]]
+    {
       "scottmckendry/cyberdream.nvim",
       lazy = false,
       priority = 1000,
@@ -125,7 +127,7 @@ require("lazy").setup({
         })
         vim.cmd("colorscheme cyberdream")
       end
-    } ]]
+    },
     -- import your plugins
     { import = "config.plugins" },
   },

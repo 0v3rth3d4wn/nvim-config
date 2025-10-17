@@ -36,7 +36,6 @@ return {
         },
         live_grep = {
           theme = "ivy",
-
         },
       },
       extensions = {
