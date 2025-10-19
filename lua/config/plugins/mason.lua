@@ -1,23 +1,27 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    version = "1.11.0",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    version = "1.32.0",
-    config = function()
-      require("mason-lspconfig").setup({
-        -- A list of servers you want Mason to automatically install.
-        -- The name must be an exact match with the Mason package name.
-        ensure_installed = { "eslint", "ts_ls" },
-        --[[ exclude = {
+	{
+		"mason-org/mason.nvim",
+		config = function()
+			require("mason").setup({
+				ensure_installed = {
+					"stylua",
+					"prettierd",
+					"tailwindcss-language-server",
+				},
+			})
+		end,
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup({
+				-- A list of servers you want Mason to automatically install.
+				-- The name must be an exact match with the Mason package name.
+				ensure_installed = { "eslint", "vtsls" },
+				--[[ exclude = {
           "ts_ls"
         } ]]
-      })
-    end,
-  },
+			})
+		end,
+	},
 }
