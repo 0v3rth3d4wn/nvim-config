@@ -1,4 +1,4 @@
-return {
+return { --[[
   'dense-analysis/ale',
   config = function()
     -- Configuration goes here.
@@ -24,5 +24,5 @@ return {
       css = { 'prettier' },
       html = { 'prettier' }
     }
-  end
+  end ]]
 }
